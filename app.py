@@ -18,12 +18,16 @@ camera = cv2.VideoCapture(2, cv2.CAP_GSTREAMER)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, IM_WIDTH)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, IM_HEIGHT)
 camera.set(cv2.CAP_PROP_FPS, fps)
+camera.set(cv2.CAP_PROP_AUTOFOCUS, 0)
+camera.set(28, 10)
 
 
 out_send = cv2.VideoWriter('appsrc ! videoconvert ! x264enc tune=zerolatency,width=640,height=480 bitrate=500 '
-                           'speed-preset=superfast ! rtph264pay ! udpsink host=127.0.0.1 port=1290',
-                           cv2.CAP_GSTREAMER,0, 20, (640,480), True)
+                           'speed-preset=superfast ! rtph264pay ! udpsink host=127.0.0.1 port=4200',
+                           cv2.CAP_GSTREAMER,2, 20, (640,480), True)
 
+
+@app.route('/', methods=['POST'])
 def socket_receive():
 
     while True:
@@ -32,7 +36,6 @@ def socket_receive():
 
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((HOST, PORT))
-            s.sendall(b"Hello, world")
             pick = s.recv(1024)
             msg = pickle.loads(pick)
 
@@ -40,15 +43,21 @@ def socket_receive():
 
 
 def gen_frames():
+    difficulty = 'normal'
     while True:
-
         success, frame = camera.read()  # read the camera frame
         out_send.write(frame)
 #        time.sleep(5)
 #        cords = socket_receive()
+#        print(cords)
+        if difficulty == 'normal':
+            time.sleep(2)
 
+        elif difficulty == 'hard':
+            time.sleep(1)
 
-#        print(frame)
+        elif difficulty == 'easy':
+            time.sleep(4)
 #        frame = cv2.rectangle(frame, (cords[0], cords[1]), (cords[2], cords[3]), (255, 0, 0), 2)
 #        frame = cv2.rectangle(frame, (cords[4], cords[5]), (cords[6], cords[7]), (255, 0, 0), 2)
         if not success:
@@ -60,18 +69,25 @@ def gen_frames():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        if request.form.get('start_stop') == 'ST_ST':
+        if request.form.get('action1') == 'Start':
             pass
-        elif request.form.get('action2') == 'Start/Stop':
-            pass
+        elif request.form.get('action2') == 'VALUE2':
+            pass  # do something else
         else:
-            pass
+            pass  # unknown
     elif request.method == 'GET':
-
         return render_template('index.html')
+
+    return render_template("index.html")
+
+
+@app.route("/test", methods=['GET', 'POST'])
+def test():
+    select = str(request.form.get('Schwierigkeitsgrad'))
+    return str(select)  # just to see what select is
 
 
 @app.route('/video_feed')
