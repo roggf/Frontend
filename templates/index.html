@@ -83,50 +83,49 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-6 align-self-center">
-                        <img src="{{ url_for('video_feed') }}" width="200%">
-                        <br>
-                        <div class="button-group">
+                        <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                            <div class="row">
+                                <div class="col-lg-auto col-sm-auto">
+                                    <div class="info-stat">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-auto col-sm-auto">
+                                <div class="info-stat">
+                                    <img src="{{ url_for('video_feed') }}" width="200%">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-image wow fadeInRight">
+                            <div class="scoreboard">
+                                <div class="scoreboard__name scoreboard__name--one">AI</div>
+                                <div class="scoreboard__name scoreboard__name">vs.</div>
+                                <div class="scoreboard__name scoreboard__name--two">Player</div>
+                                <div class="scoreboard__score">0</div>
+                                <div class="scoreboard__score"></div>
+                                <div class="scoreboard__score">0</div>
+                            </div>
                             <form method="post" action="/">
-                                <select name="Schwierigkeitsgrad" action="{{ url_for('test') }}" id="drodowdo">
+                                <select name="Schwierigkeitsgrad" action="{{ url_for('test') }}" id="dropdown">
                                     <option selected disabled value="select_diff">Schwierigkeitsgrad</option>
                                     <option value="easy">Easy</option>
                                     <option value="med">Medium</option>
                                     <option value="hard">Hard</option>
                                 </select>
                             </form>
-                        </div>
-                        <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                            <div class="row">
-                                <div class="col-lg-4 col-sm-4">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-4">
-                                <div class="info-stat">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-4">
-                                <div class="info-stat">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                            </div>
-                            <div class="col-lg-12">
-                            </div>
+
+                            <form method="post" action="/">
+                                <input type="submit" value="Start/Stop" name="action1" class="butdesigndo"
+                                       id="startposdo"/>
+                                <input type="submit" value="Reset" name="" class="butdesigndo" id="resetdo"/>
+                            </form>
                         </div>
                     </div>
                 </div>
-                    <form method="post" action="/">
-                        <input type="submit" value="Start/Stop" name="action1" class="butdesigndo" id="startposdo"/>
-                        <input type="submit" value="Reset" name="" class="butdesigndo" id="resetdo"/>
-                        <div>
-                        <h4 id="posuserdo"> Dein Punktestand </h4>
-                        <h4 id="punktu"> 0 </h4>
-                        <h4 id="poskido"> Punktestand der KI </h4>
-                        <h4 id="punktki"> 0 </h4>
-                        <h4 id="posdubdo"> Das doppelt vorkommende Bild ist: </h4>
-                        <h4 id="posdubvdo"> x </h4>
-                        </div>
-                    </form>
+
             </div>
             <div class="col-lg-6">
                 <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">

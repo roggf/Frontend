@@ -13,8 +13,8 @@ fps = 30
 # Initialize the Flask app
 app = Flask(__name__)
 # camera = cv2.VideoCapture(2)
-
-camera = cv2.VideoCapture(2, cv2.CAP_GSTREAMER)
+#camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(1, cv2.CAP_GSTREAMER)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, IM_WIDTH)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, IM_HEIGHT)
 camera.set(cv2.CAP_PROP_FPS, fps)

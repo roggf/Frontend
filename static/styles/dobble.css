@@ -22,7 +22,6 @@ position:absolute;
 #drodowdo {
     position:absolute;
  right:325px; top:180px;
-
 }
 
 /* Die CSS-ID ** bestimmt die Position des eigenen Punktestands TEXT */
@@ -60,6 +59,37 @@ position:absolute;
 #posdubvdo {
     position:absolute;
  right:170px; top:650px;
+}
+
+.scoreboard {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	width: 800px;
+	font-family: 'Quick<sand', sans-serif;
+}
+
+.scoreboard__name,
+.scoreboard__score {
+	padding: 15px;
+	text-align: center;
+}
+
+.scoreboard__name {
+	font-weight: bold;
+    font-size: 2em;
+	border-bottom: 1px solid #ddd;
+}
+
+.scoreboard__name--one {
+	color: #009578;
+}
+
+.scoreboard__name--two {
+	color: #2d0095;
+}
+
+.scoreboard__score {
+	font-size: 3em;
 }
 
 /* */
