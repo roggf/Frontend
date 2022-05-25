@@ -12,14 +12,14 @@ fps = 30
 
 # Initialize the Flask app
 app = Flask(__name__)
-#camera = cv2.VideoCapture(2)
+# camera = cv2.VideoCapture(2)
 
 camera = cv2.VideoCapture(2, cv2.CAP_GSTREAMER)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, IM_WIDTH)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, IM_HEIGHT)
 camera.set(cv2.CAP_PROP_FPS, fps)
 camera.set(cv2.CAP_PROP_AUTOFOCUS, 0)
-camera.set(28, 10)
+camera.set(28, 15)
 
 
 out_send = cv2.VideoWriter('appsrc ! videoconvert ! x264enc tune=zerolatency,width=640,height=480 bitrate=500 '
@@ -27,19 +27,19 @@ out_send = cv2.VideoWriter('appsrc ! videoconvert ! x264enc tune=zerolatency,wid
                            cv2.CAP_GSTREAMER,2, 20, (640,480), True)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/socket', methods=['POST'])
 def socket_receive():
 
-    while True:
-        HOST = "127.0.0.1"  # The server's hostname or IP address
-        PORT = 9090  # The port used by the server
+    HOST = "127.0.0.1"  # The server's hostname or IP address
+    PORT = 9090  # The port used by the server
 
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.connect((HOST, PORT))
-            pick = s.recv(1024)
-            msg = pickle.loads(pick)
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+        pick = s.recv(1024)
+        msg = pickle.loads(pick)
+        sample_output = msg
 
-            return msg
+        return sample_output
 
 
 def gen_frames():
@@ -50,14 +50,14 @@ def gen_frames():
 #        time.sleep(5)
 #        cords = socket_receive()
 #        print(cords)
-        if difficulty == 'normal':
-            time.sleep(2)
+#        if difficulty == 'normal':
+#            time.sleep(2)
+#
+#        elif difficulty == 'hard':
+#            time.sleep(1)
 
-        elif difficulty == 'hard':
-            time.sleep(1)
-
-        elif difficulty == 'easy':
-            time.sleep(4)
+#        elif difficulty == 'easy':
+#            time.sleep(4)
 #        frame = cv2.rectangle(frame, (cords[0], cords[1]), (cords[2], cords[3]), (255, 0, 0), 2)
 #        frame = cv2.rectangle(frame, (cords[4], cords[5]), (cords[6], cords[7]), (255, 0, 0), 2)
         if not success:

@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/templatemo-seo-dream.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animated.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/owl.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dobble.css')}}">
     <!--
 
     TemplateMo 563 SEO Dream
@@ -86,8 +87,7 @@
                         <br>
                         <div class="button-group">
                             <form method="post" action="/">
-                                <button type="button" class="button" value="Start_Stop">Start/Stop</button>
-                                <select name="Schwierigkeitsgrad" action="{{ url_for('test') }}">
+                                <select name="Schwierigkeitsgrad" action="{{ url_for('test') }}" id="drodowdo">
                                     <option selected disabled value="select_diff">Schwierigkeitsgrad</option>
                                     <option value="easy">Easy</option>
                                     <option value="med">Medium</option>
@@ -116,8 +116,16 @@
                     </div>
                 </div>
                     <form method="post" action="/">
-                        <input type="submit" value="Start" name="action1"/>
-                        <input type="submit" value="Stop" name="action2"/>
+                        <input type="submit" value="Start/Stop" name="action1" class="butdesigndo" id="startposdo"/>
+                        <input type="submit" value="Reset" name="" class="butdesigndo" id="resetdo"/>
+                        <div>
+                        <h4 id="posuserdo"> Dein Punktestand </h4>
+                        <h4 id="punktu"> 0 </h4>
+                        <h4 id="poskido"> Punktestand der KI </h4>
+                        <h4 id="punktki"> 0 </h4>
+                        <h4 id="posdubdo"> Das doppelt vorkommende Bild ist: </h4>
+                        <h4 id="posdubvdo"> x </h4>
+                        </div>
                     </form>
             </div>
             <div class="col-lg-6">
@@ -241,7 +249,6 @@
                     Ist eine kamerabasierte Anwendung, welche das gemeinsame Symbol auf je zwei Karten
                     erkennt und in geeigneter Weise (z.B. als Sprachausgabe) signalisiert. Idealerweise erfolgt
                     dies in weniger als 1s.</p>
-                <div class="main-green-button"><a href="#">Discover company</a></div>
             </div>
         </div>
     </div>

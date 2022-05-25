@@ -1,0 +1,69 @@
+/* Die CSS-Klasse .butdesigndo bestimmt die Größe sowie die Farbe Buttons */
+.butdesigndo {
+    width: 140px; height: 56px; background: #0ebccd;
+
+}
+
+/* Die CSS-ID ** bestimmt die Position des Start-Buttons */
+#startposdo {
+    position:absolute;
+ right:550px; top:221px;
+
+}
+
+/* Die CSS-ID ** bestimmt die Position des Reset Buttons  */
+#resetdo {
+position:absolute;
+ right:100px; top:221px;
+}
+
+
+/* Die CSS-ID ** bestimmt die Größe sowie die Position der Schwierigkeits-Topdown */
+#drodowdo {
+    position:absolute;
+ right:325px; top:180px;
+
+}
+
+/* Die CSS-ID ** bestimmt die Position des eigenen Punktestands TEXT */
+#posuserdo {
+    position:absolute;
+ right:550px; top:500px;
+}
+
+/* Die CSS-ID ** bestimmt die Position der KI-Punktestands TEXT */
+#poskido {
+    position:absolute;
+ right:220px; top:500px;
+}
+
+/* Die CSS-ID ** bestimmt die Position der KI-Punktestands ZAHL */
+#punktu {
+      position:absolute;
+ right:500px; top:500px;
+}
+
+
+/* Die CSS-ID ** bestimmt die Position der KI-Punktestands ZAHL */
+#punktki {
+      position:absolute;
+ right:170px; top:500px;
+}
+
+/* Die CSS-ID ** bestimmt die Position des Duplikat Text */
+#posdubdo {
+    position:absolute;
+ right:355px; top:650px;
+}
+
+/* Die CSS-ID ** bestimmt die Position des Duplikat Variabel */
+#posdubvdo {
+    position:absolute;
+ right:170px; top:650px;
+}
+
+/* */
+
+/* */
+
+/* */
